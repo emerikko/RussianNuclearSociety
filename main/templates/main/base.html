@@ -1,35 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>{% block title %}My Site{% endblock %}</title>
+    <title>{% block title %}Russian Nuclear Society{% endblock %}</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <style>
-        .modal {
-            display: block !important;
-            position: static;
-            background: transparent;
-        }
-
-</style>
 </head>
 <body>
     <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom"> 
-    
-        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto align-items-center">
             <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'home' %}">Главная</a> 
             <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'educ' %}">Образование и карьера</a> 
             <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'materials' %}">Материалы</a> 
             <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'events' %}">Мероприятия</a> 
             <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'about_us' %}">О нас</a> 
-            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'login' %}">Вход</a> 
-            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'register' %}">Регистрация</a> 
+            
+            {% if user.is_authenticated %}
+                <!-- пользователь вошел -->
+                <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'profile' %}">Мой профиль</a>
+                <form method="post" action="{% url 'logout' %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-link me-3 py-2 link-body-emphasis text-decoration-none p-0 border-0">
+                        Выйти ({{ user.username }})
+                    </button>
+                </form>
+            {% else %}
+                <!-- пользователь НЕ вошел -->
+                <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'login' %}">Вход</a>
+            {% endif %}
         </nav> 
     </div>    
-    <main>
+    
+    <main class="container">
         {% block content %}
         {% endblock %}
     </main>
+
+    <script>
+        function logoutGet() {
+            window.location.href = "{% url 'logout' %}?method=get";
+        }
+    </script>
 </body>
 </html>

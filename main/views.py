@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 
 def home_page(request):
@@ -20,8 +21,6 @@ def about_us_page(request):
 def login_page(request):
     return render(request, 'main/login.html')
 
-def register_page(request):
-    return render(request, 'main/register.html')
-
+@login_required
 def profile_view(request):
     return render(request, 'main/profile.html')
