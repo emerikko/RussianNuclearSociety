@@ -1,5 +1,5 @@
 """
-WSGI config for rns project.
+WSGI config for OIAO project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rns.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'OIAO.settings')
 
 application = get_wsgi_application()
