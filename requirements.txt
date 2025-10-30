@@ -3,3 +3,12 @@ Django==5.2.7
 psycopg==3.2.12
 sqlparse==0.5.3
 tzdata==2025.2
+
+# user
+# userpass
+
+# oleg
+# olha
+
+# olegolha6@mail.ru
+# olegOlhaSilmarillion
