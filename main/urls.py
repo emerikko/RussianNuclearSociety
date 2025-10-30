@@ -31,4 +31,23 @@ urlpatterns = [
         name='password_change_done'
     ),
 
+    # Articles
+    path('articles/', views.ArticleListView.as_view(), name='article_list'),
+    path('articles/create/', views.ArticleCreateView.as_view(), name='article_create'),
+    path('articles/<slug:slug>/', views.ArticleDetailView.as_view(), name='article_detail'),
+    path('articles/<slug:slug>/edit/', views.ArticleUpdateView.as_view(), name='article_edit'),
+    path('articles/<slug:slug>/delete/', views.ArticleDeleteView.as_view(), name='article_delete'),
+    path('articles/<slug:slug>/publish/', views.article_publish_toggle, name='article_publish_toggle'),
+
+    # Categories
+    path('categories/', views.CategoryListView.as_view(), name='category_list'),
+    path('categories/<slug:slug>/', views.CategoryDetailView.as_view(), name='category_detail'),
+
+    # Tags
+    path('tags/<slug:slug>/', views.TagDetailView.as_view(), name='tag_detail'),
+
+    # Management (for content managers)
+    path('management/', views.article_management_dashboard, name='management_dashboard'),
+    path('management/articles/', views.ArticleManagementListView.as_view(), name='article_management'),
+
 ]

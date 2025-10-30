@@ -1,0 +1,166 @@
+/* CSS Custom Properties for Theme Switching */
+:root {
+  /* Light theme colors */
+  --bg-color: #ffffff;
+  --text-color: #212529;
+  --navbar-bg: #f8f9fa;
+  --border-color: #dee2e6;
+  --link-color: #0d6efd;
+  --link-hover-color: #0a58ca;
+  --card-bg: #ffffff;
+  --card-border: #dee2e6;
+  --input-bg: #ffffff;
+  --input-border: #ced4da;
+  --button-primary-bg: #0d6efd;
+  --button-primary-border: #0d6efd;
+  --shadow: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] {
+  /* Dark theme colors */
+  --bg-color: #212529;
+  --text-color: #f8f9fa;
+  --navbar-bg: #343a40;
+  --border-color: #495057;
+  --link-color: #6ea8fe;
+  --link-hover-color: #9ec5fe;
+  --card-bg: #343a40;
+  --card-border: #495057;
+  --input-bg: #495057;
+  --input-border: #6c757d;
+  --button-primary-bg: #0d6efd;
+  --button-primary-border: #0d6efd;
+  --shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* Apply theme variables to elements */
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar, .border-bottom {
+  background-color: var(--navbar-bg) !important;
+  border-color: var(--border-color) !important;
+}
+
+.link-body-emphasis {
+  color: var(--link-color) !important;
+}
+
+.link-body-emphasis:hover {
+  color: var(--link-hover-color) !important;
+}
+
+.card {
+  background-color: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+  color: var(--text-color) !important;
+}
+
+.form-control {
+  background-color: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--text-color) !important;
+}
+
+.form-control:focus {
+  background-color: var(--input-bg) !important;
+  border-color: var(--button-primary-border) !important;
+  color: var(--text-color) !important;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.btn-primary {
+  background-color: var(--button-primary-bg) !important;
+  border-color: var(--button-primary-border) !important;
+}
+
+.btn-outline-primary {
+  color: var(--button-primary-bg) !important;
+  border-color: var(--button-primary-border) !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--button-primary-bg) !important;
+  border-color: var(--button-primary-border) !important;
+}
+
+.shadow, .shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem var(--shadow) !important;
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-color);
+  margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+  background-color: var(--border-color);
+  transform: scale(1.1);
+}
+
+.theme-toggle i {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+/* Dark theme specific adjustments for Bootstrap components */
+[data-theme="dark"] .table {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) > td,
+[data-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) > th {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .list-group-item {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .modal-content {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .dropdown-menu {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+}
+
+[data-theme="dark"] .dropdown-item {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .dropdown-item:hover {
+  background-color: var(--border-color);
+  color: var(--text-color);
+}
+
+/* Ensure smooth transitions for all themed elements */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Navigation responsiveness improvements */
+@media (max-width: 768px) {
+  .theme-toggle {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
