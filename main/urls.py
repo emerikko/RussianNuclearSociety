@@ -12,9 +12,7 @@ urlpatterns = [
     path('about_us/', views.about_us_page, name='about_us'),
     path('accounts/login/', views.login_page, name='login'),
     path('accounts/logout/', views.logout_view, name='logout'),
-    path('accounts/profile/', views.profile_view, name='profile'),
-    path('accounts/info_manager/', views.info_manager, name='info_manager'),
-
+    path('accounts/profile/', views.profile_view, name="profile"),
 
     # Маршруты для смены пароля
     path(
