@@ -10,10 +10,12 @@
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4">Вход</h2>
                     
-                    {% if form.errors %}
-                    <div class="alert alert-danger">
-                        Неправильный логин или пароль. Пожалуйста, попробуйте снова.
-                    </div>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-danger">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
                     {% endif %}
                     
                     <form method="post">

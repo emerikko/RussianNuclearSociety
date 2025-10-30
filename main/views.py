@@ -24,7 +24,7 @@ def about_us_page(request):
 def login_page(request):
     # Если пользователь уже авторизован - перенаправляем на профиль
     if request.user.is_authenticated:
-        return redirect('profile')
+        return redirect('main:profile')
     
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -33,7 +33,7 @@ def login_page(request):
         
         if user is not None:
             login(request, user)
-            return redirect('profile')  # Редирект на профиль
+            return redirect('main:profile')  # Редирект на профиль
         else:
             messages.error(request, 'Неверное имя пользователя или пароль')
     
@@ -41,7 +41,7 @@ def login_page(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('home')
+    return redirect('main:home')
 
 @login_required
 def profile_view(request):
@@ -59,10 +59,6 @@ def profile_view(request):
         user.save()
         
         messages.success(request, 'Ваш профиль был успешно обновлен!')
-        return redirect('profile')
+        return redirect('main:profile')
     
     return render(request, 'accounts/profile.html')
-
-@login_required
-def info_manager(request):
-    return render(request, 'accounts/info_manager.html')
