@@ -50,17 +50,6 @@
                                     <li><a class="dropdown-item" href="{{ article.get_edit_url }}">
                                         <i class="fas fa-edit"></i> Редактировать
                                     </a></li>
-                                    {% if article.can_publish and user.roles.filter.scope='content' or user.is_superuser %}
-                                        <li>
-                                            <form method="post" action="{% url 'main:article_publish_toggle' article.slug %}" class="d-inline">
-                                                {% csrf_token %}
-                                                <button type="submit" class="dropdown-item">
-                                                    <i class="fas fa-{% if article.is_published %}eye-slash{% else %}eye{% endif %}"></i>
-                                                    {% if article.is_published %}Снять с публикации{% else %}Опубликовать{% endif %}
-                                                </button>
-                                            </form>
-                                        </li>
-                                    {% endif %}
                                     {% if article.can_delete %}
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item text-danger" href="{{ article.get_delete_url }}">
@@ -92,12 +81,6 @@
                             {{ article.reading_time }} мин чтения
                         </div>
                     </div>
-
-                    {% if article.excerpt %}
-                        <div class="lead mb-4">
-                            {{ article.excerpt }}
-                        </div>
-                    {% endif %}
                 </header>
 
                 <!-- Featured Image -->
