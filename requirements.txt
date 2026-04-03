@@ -5,11 +5,5 @@ python-dotenv==1.0.1
 tzdata==2025.2
 Pillow==12.1.1
 
-# user
-# userpass
-
-# oleg
-# olha
-
-# olegolha6@mail.ru
-# olegOlhaSilmarillion
+# kirya
+# 6522
